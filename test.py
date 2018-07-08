@@ -1,4 +1,4 @@
-import PUSafe
+import pusafe
 import binascii
 
 public_key_str = """-----BEGIN RSA PUBLIC KEY-----
@@ -28,7 +28,7 @@ def main():
     fuzz_str = 'A' * 1024;
     msg = fuzz_str;
 
-    myrsa = PUSafe.PURsa(public_key_str, private_key_str);
+    myrsa = pusafe.PURsa(public_key_str, private_key_str);
 
     encrypt_str = myrsa.encrypt(msg);
     print binascii.b2a_hex(encrypt_str);
