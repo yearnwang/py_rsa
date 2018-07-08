@@ -1,6 +1,8 @@
 import pusafe
 import binascii
 
+from binascii import b2a_hex,a2b_hex
+
 public_key_str = """-----BEGIN RSA PUBLIC KEY-----
 MIGJAoGBAJ6m+aWR00650XWRNzAcy2ywCS5UAyPC4RVhlAP0BOtjegv5rHFgs/Wg
 C+lHUCwQ6/vnS9uebcnlSCjldMQRqGLoCyHdvuN0USWBRsJkCsYXWNEuoiwZ3RUQ
@@ -23,8 +25,7 @@ PQCSb1sm1qmvCkhSfMvYqBlMvVtH6fVeQSX6nNI9t1A0sgbG/IP2oFw2Z7bI8r2j
 8PKB5W18W0u8ECrHS906JZFESKLqVYWqmM2jgBVTOp7XzdjWfA==
 -----END RSA PRIVATE KEY-----"""
 
-
-def main():
+def test_rsa():
     fuzz_str = 'A' * 1024;
     msg = fuzz_str;
 
@@ -35,6 +36,24 @@ def main():
 
     decrpyt_str = myrsa.decrypt(encrypt_str)
     print decrpyt_str;
+
+def test_aes():
+    aes_text = "I Love China!!!";
+    aes_key = "fuck12345";
+
+    myaes = pusafe.PUAes(aes_key);
+    aes_e = myaes.encrypt(aes_text);
+    print b2a_hex(aes_e);
+
+    aes_s = myaes.decrypt(aes_e);
+    print aes_s;
+
+    pass;
+
+def main():
+    #test_rsa();
+    test_aes();
+
 
 
 main();
