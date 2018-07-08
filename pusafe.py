@@ -68,13 +68,13 @@ class PUAes(object):
     def encrypt(self,plaintext):
         raw = unicode_to_utf8(plaintext)
         raw = pad(raw)
-        cipher = AES.new(self.key, AES.MODE_CBC, self.iv)
+        cipher = AES.new(self.key, self.mode, self.iv)
         return cipher.encrypt(raw)
 
         pass;
 
     def decrypt(self,ciphertext):
-        cipher = AES.new(self.key, AES.MODE_CBC, self.iv)
+        cipher = AES.new(self.key, self.mode, self.iv)
         return unpad(cipher.decrypt(ciphertext))
 
         pass;
