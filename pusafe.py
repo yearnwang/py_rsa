@@ -22,13 +22,6 @@ class PURsa(object):
         return "".join(res)
         pass;
 
-    def encrypt_file(self):
-        pass;
-
-    def decrypt_file(self):
-        pass;
-
-
 
 
 
